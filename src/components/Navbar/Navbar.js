@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/4728.png';
+import logo from '../../assets/LogoBurgeria.png';
 
 const Navbar = () => {
   return (
@@ -9,9 +9,9 @@ const Navbar = () => {
         <nav className='flex items-center max-w-screen-xl mx-auto px-6 py-3'>
             <div className='flex flex-grow items-center'>
                 <Link to='/'>
-                  <img src={logo} alt='Logo' className='w-32 cursor-pointer'  />
+                  <img src={logo} alt='Logo' className='min-w-[120px] cursor-pointer'  />
                   </Link>
-                <h1 className='text-center text-3xl font-semibold text-gray-700'>Hamburgeria App</h1>
+                <h1 className='hidden text-center text-3xl font-semibold text-gray-700 md:block '>Hamburgeria App</h1>
             </div> 
             <div className='flex items-center justify-end space-x-6'>
                 <Link to='/login'>  

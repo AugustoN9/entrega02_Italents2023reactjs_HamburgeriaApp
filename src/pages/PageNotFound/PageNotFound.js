@@ -4,7 +4,7 @@ import './stylePageNotFound.css'
 
 const PageNotFound = () => {
   return (
-    <div className=' justify-center items-center top-0'>
+    <div className=' justify-center items-center top-0 h-[72vh]'>
         <div className='flex justify-center'>
             <div className='w-2/4 items-center '>
                 <h1 className='titulo'>404</h1>
