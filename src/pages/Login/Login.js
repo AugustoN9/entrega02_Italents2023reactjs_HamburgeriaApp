@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import './styleLogin.css';
 import image from '../../assets/Banner.jpg'
 import logo from '../../assets/LogoBurgeria - Login.png'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
 
-  const navigate = useNavigate();
   const [inputValues, setInputValues ] = useState({
     email: '',
     senha: ''
   });
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    alert(`Usuario ${inputValues.email} logado com sucesso! `);
-    navigate('/');
-  }
+  const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChangeValues = (event) => {
     setInputValues({
@@ -28,8 +25,10 @@ const Login = () => {
     console.log(inputValues);
   }
 
-
-    
+  const handleLogin = async(event) => {
+    event.preventDefault();
+    loginUser(inputValues);
+  }     
 
   return (
     <div 
@@ -39,13 +38,16 @@ const Login = () => {
             <img src={logo} alt='Logo' />
             <div className='form_row'>
                 <label><FontAwesomeIcon icon={faUser} /></label>
-                <input type='text' placeholder='Username' required onChange={handleChangeValues} />
+                <input type='email' name='email'  placeholder='email' required onChange={handleChangeValues} />
             </div> 
             <div className='form_row'>
                 <label><FontAwesomeIcon icon={faLock} /></label>
-                <input type='password' placeholder='Password' required onChange={handleChangeValues}/>
+                <input type='password' name='senha'  placeholder='Password' required onChange={handleChangeValues}/>
             </div>  
-            <button className='submit_btn'>Login</button>         
+            <button className='submit_btn'>Login</button>   
+            <div className=' text-white py-4 text-center'>
+              <p>Ainda não tem conta?<a href='#'> Cadastrar</a></p>              
+            </div>      
         </form>      
     </div>
   )
